@@ -18,6 +18,7 @@ class SimpleDatabase{
     TaskStatus};
     unsigned long long query_id;
     bool is_saving_query_id_on;
+    
     template <typename T>
     int select(std::string table_name, std::vector<T> fields_numbers, std::string options) {}; 
     
