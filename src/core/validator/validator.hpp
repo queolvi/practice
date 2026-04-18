@@ -5,8 +5,12 @@ class Validator{
     std::string class_name;
     Validator(std::string class_name) : class_name(class_name) {}
     ~Validator() = default;
-    bool is_valide();
+    virtual bool is_valide() {};
 };
+class UserValidator : public Validator, private User {
+      
+};
+
 class UserValidator : public Validator, private User {
       
 };
