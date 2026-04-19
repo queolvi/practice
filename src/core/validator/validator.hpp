@@ -2,8 +2,8 @@
 
 class Validator{
     public:
-    std::string class_name;
-    Validator(std::string class_name) : class_name(class_name) {}
+    std::string table_name;
+    Validator(std::string table_name) : table_name(table_name) {}
     ~Validator() = default;
     virtual bool is_valide() {};
 };
