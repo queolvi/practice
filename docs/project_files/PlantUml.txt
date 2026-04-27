@@ -1,0 +1,86 @@
+@startuml AssignmentManagerDiagram
+
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+
+enum TaskStatus {
+    + ASSIGNED
+    + IN_PROGRESS
+    + SUBMITTED
+    + GRADED
+}
+
+
+class Course {
+    + courseId: unsigned
+    + courseName: string
+    + description: string
+    + getCourseId(): unsigned
+    + getCourseName(): string
+}
+
+class Assignment {
+    + assignmentId: unsigned
+    + title: string
+    + description: string
+    + deadline: Date
+    + maxScore: short
+    + courseId: unsigned
+    + allowLateSubmission: bool
+    + getAssignmentId(): unsigned
+    + isOverdue(): bool
+    + getMaxScore(): short
+}
+
+class Student {
+    + userId: unsigned
+    + firstName: string
+    + lastName: string
+    + email: string
+    + getUserId(): unsigned
+    + getFullName(): string
+}
+
+class Teacher {
+    + teacherId: unsigned
+    + firstName: string
+    + lastName: string
+    + getTeacherId(): unsigned 
+    + createAssignment(): Assignment
+    + gradeSubmission(): void
+}
+
+class AssignmentSubmission {
+    + submissionId: unsigned 
+    + assignmentId: unsigned 
+    + studentId: unsigned 
+    + assignedDate: Date
+    + submissionDate: Date
+    + submissionFile: string
+    + grade: short
+    + status: TaskStatus
+    + checkingTeacherId: unsigned
+    + submit(): bool
+    + isOverdue(): bool
+    + getGrade(): short
+}
+
+class AssignmentGroup {
+    + groupId: unsigned
+    + assignmentId: unsigned
+    + getGroupId(): unsigned 
+}
+
+Course "1" -- "0..*" Assignment : contains >
+Assignment "0..*" -- "1" TaskStatus : has status >
+Teacher "1" -- "0..*" Assignment : creates >
+Student "1" -- "0..*" AssignmentSubmission : submits >
+Assignment "1" -- "0..*" AssignmentSubmission : has submissions >
+Teacher "1" -- "0..*" AssignmentSubmission : grades >
+AssignmentSubmission "0..*" -- "1" TaskStatus : current status >
+Assignment "1" -- "0..*" AssignmentGroup : assigned to >
+AssignmentGroup "1" -- "0..*" Student : includes >
+
+
+@enduml
