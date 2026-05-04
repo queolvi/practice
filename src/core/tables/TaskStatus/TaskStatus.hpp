@@ -1,0 +1,1 @@
+enum class TaskStatus { ASSIGNED, IN_PROGRESS, SUBMITTED, GRADED};
