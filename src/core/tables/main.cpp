@@ -24,6 +24,7 @@ int main () {
 
 Student st = {1 , "1", "2", "12345@gmail.con"};
 StudentValidator st_valid = st;
+st_valid.check_email();
 
     return 0;
 }

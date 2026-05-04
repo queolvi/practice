@@ -6,9 +6,9 @@
 class AssingmentSubmission{
 	private:
 	unsigned long long assingment_submission_id;
-	Assignment* assignment_;
-	Student* student_;
-	Teacher* teacher_;
+	Assignment assignment_;
+	std::vector<Student> student_;
+	Teacher teacher_;
 	year_month_day assigned_date;
 	year_month_day submission_date;
 	std::FILE* submission_file;
@@ -16,8 +16,8 @@ class AssingmentSubmission{
 	TaskStatus status;
 
 	public:
-	AssingmentSubmission(unsigned long long assingment_submission_id, Assignment* assignment_,
-	Student* student_, Teacher* teacher_, year_month_day assigned_date, year_month_day submission_date,
+	AssingmentSubmission(unsigned long long assingment_submission_id, Assignment assignment_,
+	std::vector<Student> student_, Teacher teacher_, year_month_day assigned_date, year_month_day submission_date,
 	std::FILE* submission_file, short grade, TaskStatus status);
 	bool submit();
 	bool is_overdue(); 

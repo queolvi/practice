@@ -1,0 +1,1 @@
+g++ tables/main.cpp tables/Assignment/Assignment.cpp tables/AssignmentGroup/AssignmentGroup.cpp tables/AssignmentSubmission/AssignmentSubmission.cpp tables/Course/Course.cpp tables/Student/Student.cpp tables/Teacher/Teacher.cpp validator/Validator.cpp -o main.exe
